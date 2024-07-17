@@ -2,29 +2,22 @@ package ru.netology.hwjavamaven3.service;
 
 public class StatsService {
 
-    public int sumSales(int[] sales) { //ищет сумму продаж
-        int sum = 0;
+    public long sumSales(long[] sales) { //ищет сумму продаж
+        long allSale = 0;
 
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
+        for (long sale : sales) {
+            allSale += sale;
         }
 
-        return sum;
+        return allSale;
     }
 
-    public int AverageSales(int[] sales) { //ищет среднюю сумму продаж
-        int sum = 0;
-
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        int average = sum / sales.length;
-
-        return average;
+    public long averageSales(long[] sales) { //ищет среднюю сумму продаж
+        return sumSales(sales) / 12;
 
     }
 
-    public int maxSumMonth(int[] sales) { //ищет номер месяца с максимальными продажами
+    public int maxSumMonth(long[] sales) { //ищет номер месяца с максимальными продажами
         int maxMonth = 0;
 
         for (int i = 0; i < sales.length; i++) {
@@ -35,7 +28,7 @@ public class StatsService {
         return maxMonth + 1;
     }
 
-    public int minSumMonth(int[] sales) { //ищет номер месяца с минимальными продажами
+    public int minSumMonth(long[] sales) { //ищет номер месяца с минимальными продажами
         int minMonth = 0;
 
         for (int i = 0; i < sales.length; i++) {
@@ -46,37 +39,30 @@ public class StatsService {
         return minMonth + 1;
     }
 
-    public int AboveAverageSales(int[] sales) { //ищет количество месяцев с продажами выше среднего
-        int sum = 0;
-        int count = 0;
+    public int belowAverageSales(long[] sales) { //ищет количество месяцев с продажами выше среднего
+        int counter = 0;
+        long average = averageSales(sales);
 
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        int average = sum / sales.length;
-
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > average) {
-                count++;
+        for (long sale : sales) {
+            if (sale < average) {
+                counter++;
             }
+
         }
-        return count;
+        return counter;
     }
 
-    public int BelowAverageSales(int[] sales) { //ищет количество месяцев с продажами ниже среднего
-        int sum = 0;
-        int count = 0;
+    public int aboveAverageSales(long[] sales) { //ищет количество месяцев с продажами ниже среднего
+        int counter = 0;
+        long average = averageSales(sales);
 
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        int average = sum / sales.length;
-
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < average) {
-                count++;
+        for (long sale : sales) {
+            if (sale > average) {
+                counter++;
             }
+
         }
-        return count;
+        return counter;
     }
 }
+

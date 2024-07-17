@@ -5,35 +5,35 @@ import org.junit.jupiter.api.Test;
 
 
 public class StatsServiceTest {
-    
+
     @Test
-    public void shouldCalculateSumOfSales() {
+    public void AllSumSales() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 180;
-        int actual = service.sumSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18;
+        long actual = service.sumSales(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldCalculateAverageValue() {
+    public void averageSalesSum() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 15;
-        int actual = service.AverageSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = (8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18) / 12;
+        long actual = service.averageSales(sales);
 
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
-    public void shouldCalculateMonthWithMaxSales() {
+    public void maxSumSalesMonth() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 8;
         int actual = service.maxSumMonth(sales);
 
@@ -41,10 +41,10 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void shouldCalculateMonthWithMinSales() {
+    public void minSalesMonth() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 9;
         int actual = service.minSumMonth(sales);
 
@@ -52,23 +52,23 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void shouldCalculateMonthsWhereSalesAboveAverage() {
+    public void belowAverageMonths() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-        int actual = service.AboveAverageSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+        long actual = service.belowAverageSales(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldCalculateMonthsWhereSalesBelowAverage() {
+    public void aboveAverageMonths() {
         StatsService service = new StatsService();
 
-        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 5;
-        int actual = service.AboveAverageSales(sales);
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+        long actual = service.aboveAverageSales(sales);
 
         Assertions.assertEquals(expected, actual);
     }
